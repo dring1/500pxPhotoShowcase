@@ -1,6 +1,7 @@
 import React from 'react';
 import mui from 'material-ui';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+let Auth = require('../../util/auth');
 
 const ThemeManager = new mui.Styles.ThemeManager();
 
@@ -18,16 +19,19 @@ class Image extends React . Component {
     super( props );
   }
   render() {
-    console.log(this.props.metadata)
+    // console.log(this.props.metadata)
     return (
     <div>
+      <FlatButton className="likeButton" label="Action1"/>
       <Card initiallyExpanded={false}>
         <CardHeader
-          title={this.props.metadata.name}
           subtitle={this.props.metadata.user.username}
           avatar={this.props.metadata.user.userpic_url}
           />
-        <CardMedia >
+        <CardMedia
+          overlay={<CardTitle onClick={this.handleLike.bind(this, this.props.metadata.id)}
+            title={this.props.metadata.name}
+            subtitle={<FlatButton label="Action1"/>}/>}>
           <img src={this.props.metadata.image_url}/>
         </CardMedia>
       </Card>
@@ -37,6 +41,10 @@ class Image extends React . Component {
 
 
   loadImage(){
+  }
+
+  handleLike(imageId){
+    console.log(imageId);
   }
 
 

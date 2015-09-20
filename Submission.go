@@ -2,7 +2,7 @@ package main
 
 type (
 	Submission struct {
-		id       int    `json:"id"`
+		Id       int    `json:"id"`
 		UserId   int    `json:"user_id"`
 		ImageUrl string `json:"image_url"`
 		Name     string `json:"name"`
