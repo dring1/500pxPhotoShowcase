@@ -33,11 +33,11 @@ class Login extends React . Component {
   }
 
   handleLogoutClick(){
-
+    this.props.childCallback(false);
   }
 
   init() {
-    window._500px.init({sdk_key: 'ce2f3b466c4b8705a6f6c75ff5ee91b7f2d33cc6'});
+    _500px.init({sdk_key: 'ce2f3b466c4b8705a6f6c75ff5ee91b7f2d33cc6'});
   }
 
   componentDidMount(){
