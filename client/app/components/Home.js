@@ -6,15 +6,30 @@ import Login from './500px/Login';
 let RaisedButton = mui.RaisedButton;
 
 class Home extends React . Component {
+  constructor(){
+    super();
+    this.state = {
+      auth: false
+    }
+  }
   render() {
-    return ( <div>
-      <Login/>
-      <FiveHundredPxList/></div>);
+    return (
+      <div>
+        <Login childCallback={this.loginCallback()} auth={this.state.auth}/>
+        <FiveHundredPxList auth={this.state.auth}/>
+      </div>);
   }
 
   handleClick() {
     var router = this.context.router;
 
+  }
+
+  loginCallback(status){
+    var that = this;
+    return (status) => {
+      that.setState({auth: status});
+    }
   }
 
   static contextTypes = {

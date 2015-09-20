@@ -5,23 +5,35 @@ require('../../util/500px-js-sdk/500px');
 let RaisedButton = mui.RaisedButton;
 
 class Login extends React . Component {
-  render() {
-    return ( <div>
-      <RaisedButton label="Login" secondary={true} onClick={this.handleClick.bind(this)}/></div>);
+
+  constructor(props){
+    super(props);
   }
 
-  handleClick() {
+  render() {
+    var component;
+    console.log(this.props);
+    if (this.props.auth) {
+      component = <RaisedButton label="Logout" primary={true} onClick={this.handleLogoutClick.bind(this)}/>
+    } else {
+      component = <RaisedButton label="Login" secondary={true} onClick={this.handleLoginClick.bind(this)}/>
+    }
+    return (<span className="login-btn"> {component} </span>);
+  }
+
+  handleLoginClick() {
+    let that = this;
     _500px.login(function (status) {
-      console.log('LOGGED IN')
       if (status == 'authorized') {
-          alert('You have logged in');
-          _500px.api('/users', function (response) {
-              // .......
-          });
+          that.props.childCallback(true);
       } else {
-          alert('You denied my application');
+          that.props.childCallback(false);
       }
     });
+  }
+
+  handleLogoutClick(){
+
   }
 
   init() {
@@ -30,6 +42,11 @@ class Login extends React . Component {
 
   componentDidMount(){
     this.init();
+  }
+
+  static propTypes = {
+    childCallback: React.PropTypes.func,
+    auth: React.PropTypes.bool,
   }
 }
 export default Login;

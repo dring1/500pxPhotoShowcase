@@ -30,5 +30,12 @@ html, body {
 }
 
 .like-btn{
-  
+
+}
+
+.login-btn{
+  position: fixed;
+  right: 10px;
+
+  z-index: 3003;
 }

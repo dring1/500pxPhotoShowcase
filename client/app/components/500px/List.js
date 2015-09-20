@@ -15,9 +15,10 @@ class List extends React . Component {
     };
   }
   render() {
+    console.log(this.props.auth)
       var list = this.state.images.map( (image, index) => {
           var component;
-          component = <Image key={index} metadata={image}/>;
+          component = <Image key={index} metadata={image} auth={this.props.auth}/>;
           return (component)
       } );
       return (
@@ -45,7 +46,7 @@ class List extends React . Component {
   }
 
   static propTypes = {
-
+    auth: React.PropTypes.bool.isRequired,
   }
 }
 
