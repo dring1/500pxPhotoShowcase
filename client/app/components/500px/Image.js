@@ -1,7 +1,6 @@
 import React from 'react';
 import mui from 'material-ui';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-let Auth = require('../../util/auth');
 
 const ThemeManager = new mui.Styles.ThemeManager();
 
