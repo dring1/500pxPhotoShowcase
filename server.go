@@ -1,9 +1,23 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/itsjamie/gin-cors"
+)
 
 func main() {
 	r := gin.Default()
+	r.Use(cors.Middleware(cors.Config{
+		Origins:         "*",
+		Methods:         "GET, PUT, POST, DELETE",
+		RequestHeaders:  "Origin, Authorization, Content-Type",
+		ExposedHeaders:  "",
+		MaxAge:          50 * time.Second,
+		Credentials:     true,
+		ValidateHeaders: false,
+	}))
 
 	r.GET("/popular", popular)
 	r.Static("/static", "./client/dist")
@@ -11,7 +25,7 @@ func main() {
 }
 
 func popular(c *gin.Context) {
-	resp, err := Get500pxWithQuery("photos", "feature=popular&sort=created_at&image_size=3&include_store=store_download&include_states=voted&rpp=100", true)
+	resp, err := Get500pxWithQuery("photos", "feature=popular&sort=created_at&image_size=4&include_store=store_download&include_states=voted&rpp=100", true)
 	if err != nil {
 		c.JSON(500, gin.H{
 			"msg": "Unable to access 500px api server",

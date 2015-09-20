@@ -5,6 +5,16 @@ type (
 		id       int    `json:"id"`
 		UserId   int    `json:"user_id"`
 		ImageUrl string `json:"image_url"`
+		Name     string `json:"name"`
+		User     struct {
+			// Avatar struct {
+			// 	Pic struct {
+			// 		Url string `json:"https"`
+			// 	} `json:"default"`
+			// } `json:"avatars"`
+			UserPic  string `json:"userpic_url"`
+			UserName string `json:"username"`
+		} `json:"user"`
 	}
 
 	Response struct {
