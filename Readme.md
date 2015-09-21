@@ -14,3 +14,7 @@ Single Page App meets the need for an application of this size, avoid the need f
 Fetching top 100 results through `server.go` to use authenticated query.
 
 Due to the query for popular results only returning a 100 results caching did not seem necessary.
+
+### Access Token
+Access token is stored via the 500px Javascript SDK.
+The SDK enabled the quickest solution to use the access token and perform API calls on the users behalf.
