@@ -3,10 +3,9 @@
 ### To Run
 1. `git clone https://github.com/dring1/500pxPhotoShowcase.git`
 2. cd 500pxPhotoShowcase
-4. export FHPX_CONSUMER_KEY="YOUR CONSUMER KEY"
-5. go build
-6. execute the produced binary from the terminal `./500pxPhotoShowcase`
-7. open `http://localhost:8080/showcase/` in a browser
+3. go build
+4. execute the produced binary from the terminal `./500pxPhotoShowcase`
+5. open `http://localhost:8080/showcase/` in a browser
 
 ### Architecture
 
