@@ -14,10 +14,10 @@ var (
 )
 
 func init() {
-	ConsumerKey = "XsHXPWbiYTMPs31kco8wX2ZemF8agTXBAd3EGzkN" //os.Getenv("FHPX_CONSUMER_KEY")
+	ConsumerKey = os.Getenv("FHPX_CONSUMER_KEY")
 	if ConsumerKey == "" {
-		fmt.Println("Did not set environment variable FHPX_CONSUMER_KEY")
-		os.Exit(1)
+		ConsumerKey = "XsHXPWbiYTMPs31kco8wX2ZemF8agTXBAd3EGzkN"
+		fmt.Println("Did not set environment variable FHPX_CONSUMER_KEY, using default", ConsumerKey)
 	}
 }
 
